@@ -4,18 +4,24 @@ import Routes from './src/Navigations/Routes'
 import { Provider } from 'react-redux'
 import { store } from './src/redux/store'
 import { getItem } from './src/utils/utils'
-import { userDataObject } from './src/utils/Interface'
-import { setUserData } from './src/redux/actions/auth'
+import { fontFamilyobject, userDataObject } from './src/utils/Interface'
+import actions from './src/redux/actions'
+
 
 const App = () => {
   useEffect(() => {
     (async () => {
       const userData = await getItem('userData') as userDataObject
-      console.log(userData, 'userDatauserDatauserData');
-      if(!!userData.authToken){
-        setUserData(userData)
+      if (!!userData.authToken) {
+        actions.setUserData(userData)
       }
+      const primaryFontFamily = await getItem('primaryFontFamily') as fontFamilyobject
+      console.log(primaryFontFamily, 'userDatauserDatauserData');
 
+      if (!!primaryFontFamily) {
+        actions.primaryFontFamily(primaryFontFamily)
+
+      }
     })()
   }, [])
   return (

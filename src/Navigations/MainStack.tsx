@@ -3,12 +3,15 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Screens from '../Screens'
 import navigationStrings from './navigationStrings';
+import { useSelector } from 'react-redux';
+import { allReducer, fontFamilyobject } from '../utils/Interface';
 
 const Tab = createBottomTabNavigator();
 
-const MainStack = () => {
+const MainStack = (primaryFontFamily:fontFamilyobject) => {
+
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator screenOptions={{ headerShown: false ,tabBarLabelStyle:{fontFamily:primaryFontFamily.bold}}}>
       <Tab.Screen name={navigationStrings.HOME} component={Screens.Home} />
       <Tab.Screen name={navigationStrings.SEARCH} component={Screens.Search} />
       <Tab.Screen name={navigationStrings.POST} component={Screens.CreatePost} />
