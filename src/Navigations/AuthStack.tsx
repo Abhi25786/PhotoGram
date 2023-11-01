@@ -3,7 +3,7 @@ import React from 'react'
 import * as Screens from '../Screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import navigationStrings from './navigationStrings';
-import { fontFamilyobject } from '../utils/Interface';
+import { fontFamilyobject } from '../redux/Interface';
 
 
 const Stack = createNativeStackNavigator();

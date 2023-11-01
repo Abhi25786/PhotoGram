@@ -4,7 +4,7 @@ import Routes from './src/Navigations/Routes'
 import { Provider } from 'react-redux'
 import { store } from './src/redux/store'
 import { getItem } from './src/utils/utils'
-import { fontFamilyobject, userDataObject } from './src/utils/Interface'
+import { fontFamilyobject, userDataObject } from './src/redux/Interface'
 import actions from './src/redux/actions'
 
 

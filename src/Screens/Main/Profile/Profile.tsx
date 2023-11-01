@@ -3,11 +3,9 @@ import React from 'react'
 import actions from '../../../redux/actions'
 import fontfamily from '../../../styles/fontfamily'
 import { useSelector } from 'react-redux'
-import { allReducer, fontFamilyobject, mainInterface } from '../../../utils/Interface'
+import { allReducer, fontFamilyobject, mainInterface } from '../../../redux/Interface'
 
-const Profile = () => {
-  const  primaryFontFamily = useSelector((state:allReducer)=>state?.main?.primaryFontFamily)  as fontFamilyobject
-  
+const Profile = () => {  
   return (
     <View>
       <Button title='LogOut' onPress={() => actions.setUserData({})} />

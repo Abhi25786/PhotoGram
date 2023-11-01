@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Screens from '../Screens'
 import navigationStrings from './navigationStrings';
 import { useSelector } from 'react-redux';
-import { allReducer, fontFamilyobject } from '../utils/Interface';
+import { allReducer, fontFamilyobject } from '../redux/Interface';
 
 const Tab = createBottomTabNavigator();
 

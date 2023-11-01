@@ -4,7 +4,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { AuthStack } from './AuthStack'
 import { useSelector } from 'react-redux'
-import { allReducer, authInerface, fontFamilyobject } from '../utils/Interface'
+import { allReducer, authInerface, fontFamilyobject } from '../redux/Interface'
 import MainStack from './MainStack'
 
 const Routes = () => {
