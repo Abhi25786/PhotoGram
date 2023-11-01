@@ -1,27 +1,39 @@
-import React, { useEffect } from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
-import Routes from './src/Navigations/Routes'
-import { Provider } from 'react-redux'
-import { store } from './src/redux/store'
-import { getItem } from './src/utils/utils'
-import { fontFamilyobject, userDataObject } from './src/redux/Interface'
-import actions from './src/redux/actions'
+import React, { useEffect } from 'react';
+import { SafeAreaView } from 'react-native';
+import { Provider } from 'react-redux';
+import Routes from './src/Navigations/Routes';
+import { fontFamilyobject, userDataObject } from './src/redux/Interface';
+import actions from './src/redux/actions';
+import { store } from './src/redux/store';
+import { getItem } from './src/utils/utils';
+import i18next from './src/constants/lang'
 
 
 const App = () => {
   useEffect(() => {
     (async () => {
+
+
+      // check primary lang
+      const primaryTranslation = await getItem('primaryTranslation') as string
+      if(!!primaryTranslation){
+        i18next.changeLanguage(primaryTranslation);
+      }else{
+        i18next.changeLanguage('en');
+      }
+
+      // check user exist or not
       const userData = await getItem('userData') as userDataObject
       if (!!userData.authToken) {
-        actions.setUserData(userData)
+        actions.setUserData((userData))
       }
+      // primaryFontFamily
       const primaryFontFamily = await getItem('primaryFontFamily') as fontFamilyobject
-      console.log(primaryFontFamily, 'userDatauserDatauserData');
-
       if (!!primaryFontFamily) {
         actions.primaryFontFamily(primaryFontFamily)
-
       }
+
+   
     })()
   }, [])
   return (
