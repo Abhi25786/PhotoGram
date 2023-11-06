@@ -37,11 +37,9 @@ const App = () => {
     })()
   }, [])
   return (
-    <SafeAreaView style={{ flex: 1 }}>
       <Provider store={store}>
         <Routes />
       </Provider>
-    </SafeAreaView>
   )
 }
 
