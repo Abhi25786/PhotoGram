@@ -8,11 +8,12 @@ import { fontFamilyobject } from '../redux/Interface';
 
 const Stack = createNativeStackNavigator();
 
-export const AuthStack = (primaryFontFamily:fontFamilyobject) => {
+export const AuthStack = (primaryFontFamily: fontFamilyobject) => {
   return (
-    <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen name={navigationStrings.LOGIN} component={Screens.Login}/>
-        <Stack.Screen name={navigationStrings.SIGNUP} component={Screens.SignUp}/>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name={navigationStrings.INITIAL_SCREEN} component={Screens.InitialScreen} />
+      <Stack.Screen name={navigationStrings.LOGIN} component={Screens.Login} />
+      <Stack.Screen name={navigationStrings.SIGNUP} component={Screens.SignUp} />
     </Stack.Navigator>
   )
 }

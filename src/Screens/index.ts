@@ -1,3 +1,4 @@
+export {default as InitialScreen}  from './Auth/InitialScreen/InitialScreen'
 export {default as Login}  from './Auth/Login/Login'
 export {default as SignUp}  from './Auth/SignUp/SignUp'
 export {default as Home}  from './Main/Home/Home'

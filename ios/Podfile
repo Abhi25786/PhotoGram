@@ -24,6 +24,9 @@ if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
+pod 'react-native-video', :path => '../node_modules/react-native-video/react-native-video.podspec'
+pod 'react-native-video/VideoCaching', :path => '../node_modules/react-native-video/react-native-video.podspec'
+
 
 target 'PhotoGram' do
   config = use_native_modules!
