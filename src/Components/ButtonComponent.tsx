@@ -9,7 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import colors from '../styles/colors';
 import { moderateScale, moderateScaleVertical, width } from '../styles/responsiveSize';
 import { useSelector } from 'react-redux';
@@ -56,7 +56,7 @@ const styles = stylefuntion(primaryFontFamily)
   );
 };
 
-export default ButtonComponent;
+export default memo(ButtonComponent);
 
 const stylefuntion =(primaryFontFamily:fontFamilyobject)=>{
 
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
   mainView: {
     flexDirection: 'row',
     backgroundColor:colors.themeColor,
-    width:moderateScale(width-48),
-    paddingVertical:moderateScaleVertical(10),
+    width:width-48,
+    paddingVertical:moderateScaleVertical(13),
     alignSelf:'center',
     borderRadius:moderateScale(8),
 

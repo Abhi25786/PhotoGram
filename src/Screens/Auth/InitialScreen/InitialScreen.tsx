@@ -1,20 +1,20 @@
-import {Alert, Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React, {useRef} from 'react';
-import WrapperContainer from '../../../Components/WrapperContainer';
-import imagePath from '../../../constants/imagePath';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Image, ImageBackground, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import ButtonComponent from '../../../Components/ButtonComponent';
+import WrapperContainer from '../../../Components/WrapperContainer';
+import navigationStrings from '../../../Navigations/navigationStrings';
+import imagePath from '../../../constants/imagePath';
+import { allReducer } from '../../../redux/Interface';
 import colors from '../../../styles/colors';
-import {useSelector} from 'react-redux';
-import {allReducer, fontFamilyobject} from '../../../redux/Interface';
-import {
-  moderateScaleVertical,
-  textScale,
-  width,
-} from '../../../styles/responsiveSize';
-import fontfamily from '../../../styles/fontfamily';
-import { strings } from '../../../constants/lang';
+import { moderateScaleVertical } from '../../../styles/responsiveSize';
+import stylefuntion from './styles';
+
 const InitialScreen = () => {
-  const ref = useRef();
+  const navigation = useNavigation();
+  const { t } = useTranslation();
 
   const primaryFontFamily = useSelector(
     (state: allReducer) => state?.main?.primaryFontFamily || {},
@@ -26,34 +26,28 @@ const InitialScreen = () => {
       <ImageBackground
         source={imagePath.intoImage}
         style={styles.backgroundImage}
-        imageStyle={{resizeMode: 'stretch'}}>
-        <View
-          style={{
-            position: 'absolute',
-            bottom: moderateScaleVertical(54),
-            alignItems: 'center',
-            width: width,
-          }}>
-          <Text style={{
-            fontSize:textScale(36),
-            fontFamily:primaryFontFamily.bold,
-            color:colors.white
-            }}>{strings('WELCOME_TO_TAP')}</Text>
-          <Text style={{     fontSize:textScale(14),
-            fontFamily:primaryFontFamily.regular,
-            color:colors.white}}>{strings('CONTECTING_WITH_PEOPLE')}</Text>
+        imageStyle={{resizeMode: 'cover'}}>
+        <View style={styles.bottomView}>
+          <Image source={imagePath.logo} style={styles.logoStyle} />
+          <Text style={styles.welcomeText}>{t('WELCOME_TO_TAP')}</Text>
+          <Text style={styles.connectWithStyle}>
+            {t('CONTECTING_WITH_PEOPLE')}
+          </Text>
           <ButtonComponent
-            centerTitle="Join Now"
+            centerTitle={t('JOIN_NOW')}
             primaryFontFamily={primaryFontFamily}
             containerStyle={{marginTop: moderateScaleVertical(52)}}
-            onPress={()=>Alert.alert('eadu')}
+            onPress={() => navigation.navigate(navigationStrings.LOGIN)}
           />
+
           <Text
             style={[
               styles.signIpText,
               {color: colors.white, fontFamily: primaryFontFamily.medium},
-            ]}>
-            {strings('ALREADY_A_MEMBER')} <Text style={styles.signIpText}>{strings('SIGNIN')}</Text>
+            ]}
+            onPress={() => navigation.navigate(navigationStrings.SIGNUP)}>
+            {t('ALREADY_A_MEMBER')}{' '}
+            <Text style={styles.signIpText}>{t('SIGNIN')}</Text>
           </Text>
         </View>
       </ImageBackground>
@@ -62,17 +56,3 @@ const InitialScreen = () => {
 };
 
 export default InitialScreen;
-const stylefuntion = (primaryFontFamily: fontFamilyobject) => {
-  const styles = StyleSheet.create({
-    backgroundImage: {
-      flex: 1,
-    },
-    signIpText: {
-      color: colors.themeColor,
-      fontFamily: primaryFontFamily.bold,
-      fontSize: textScale(14),
-      marginTop: moderateScaleVertical(24),
-    },
-  });
-  return styles;
-};

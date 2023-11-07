@@ -15,8 +15,3 @@ i18next.use(initReactI18next).init({
 });
 
 export default i18next;
-// use for diret get key from the object
-export const strings = (key:string) => {
-  const { t } = useTranslation();
-  return t(key);
-};
