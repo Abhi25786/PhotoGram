@@ -78,6 +78,7 @@ const AnimatedTextInput: FC<propType> = ({
       {!!lable && (
         <Animated.Text
           onPress={() => textInputRef.current.focus()}
+        
           style={[
             styles.lableStyle,
             bottomToTopAnimation(
