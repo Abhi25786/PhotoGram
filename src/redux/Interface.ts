@@ -1,5 +1,5 @@
 export interface userDataObject {
-authToken:string
+token:string
 }
 export interface authInerface {
     userData:userDataObject

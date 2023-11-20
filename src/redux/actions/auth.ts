@@ -1,4 +1,5 @@
-import { setItem } from "../../utils/utils";
+import apiEndpoints from "../../confg/urls";
+import { apiPost, setItem } from "../../utils/utils";
 import { authData } from "../reducer/authReducer";
 import { store } from "../store";
 
@@ -11,3 +12,7 @@ export const setUserData = (data: object) => {
         console.log(error, 'errorerrorerrorerror');
     })
 }
+
+export const login = (data: object, header: object) => {
+  return apiPost(apiEndpoints.LOGIN, data, header);
+};

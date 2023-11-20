@@ -13,7 +13,7 @@ const Routes = () => {
  
   return (
     <NavigationContainer>
-      {!!userData?.authToken 
+      {!!userData?.token 
       ? 
       MainStack({primaryFontFamily,primaryLanguage})
        : AuthStack(primaryFontFamily)

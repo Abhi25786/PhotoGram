@@ -33,6 +33,19 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const onLogin =()=>{
+    actions.login({
+      email:email,
+      password: password
+    },{}).then((res)=>{
+      actions.setUserData(res?.data)
+    }).catch((error)=>{
+      console.log(error,'errorerrorerror');
+    })
+    return
+
+  }
+
   return (
     <WrapperContainer style={{paddingHorizontal: moderateScale(24)}}>
       <KeyboardAvoidingView
@@ -78,9 +91,7 @@ const Login = () => {
 
               bottom: moderateScale(19),
             }}
-            onPress={() =>
-              actions.setUserData({authToken: 'ciaugvuisyfdvsuyfudbk'})
-            }
+            onPress={onLogin}
           />
         </ScrollView>
       </KeyboardAvoidingView>
